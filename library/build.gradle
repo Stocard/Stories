@@ -1,18 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion 30
-    group = "com.teresaholfeld.stories"
 
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 30
         versionCode 1
         versionName "1.2.0"
-
-
     }
     buildTypes {
         release {
