@@ -5,11 +5,10 @@ package com.teresaholfeld.stories
 import android.annotation.TargetApi
 import android.content.Context
 import android.os.Build
-import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
-import java.util.ArrayList
+import androidx.core.content.ContextCompat
 
 class StoriesProgressView : LinearLayout {
 
@@ -24,6 +23,7 @@ class StoriesProgressView : LinearLayout {
     private val progressBars = ArrayList<PausableProgressBar>()
 
     private var storiesCount = -1
+
     /**
      * pointer of running animation
      */
@@ -42,7 +42,8 @@ class StoriesProgressView : LinearLayout {
         fun onComplete()
     }
 
-    @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs) {
+    @JvmOverloads
+    constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs) {
         init(context, attrs)
     }
 
@@ -51,18 +52,20 @@ class StoriesProgressView : LinearLayout {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int)
-        : super(context, attrs, defStyleAttr, defStyleRes) {
-        init(context, attrs)
-    }
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) :
+        super(context, attrs, defStyleAttr, defStyleRes) {
+            init(context, attrs)
+        }
 
     private fun init(context: Context, attrs: AttributeSet?) {
-        orientation = LinearLayout.HORIZONTAL
+        orientation = HORIZONTAL
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.StoriesProgressView)
         storiesCount = typedArray.getInt(R.styleable.StoriesProgressView_progressCount, 0)
         progressColor = typedArray.getColor(R.styleable.StoriesProgressView_progressColor, defaultColor)
-        progressBackgroundColor = typedArray.getColor(R.styleable.StoriesProgressView_progressBackgroundColor,
-            defaultBackgroundColor)
+        progressBackgroundColor = typedArray.getColor(
+            R.styleable.StoriesProgressView_progressBackgroundColor,
+            defaultBackgroundColor
+        )
         typedArray.recycle()
         bindViews()
     }
