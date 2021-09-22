@@ -130,7 +130,7 @@ class StoriesProgressView : LinearLayout {
      * Reverse current story
      */
     fun reverse() {
-        if (current < 0) return
+        if (current >= progressBars.size || current < 0) return
         val p = progressBars[current]
         wasSkippedBackward = true
         wasSkippedForward = false
